@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Ridgemont University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+
+  :root {
+    --ground: #F2F6F5;
+    --surface: #FFFFFF;
+    --surface-2: #E8EFED;
+    --ink: #142F2B;
+    --ink-soft: #526B65;
+    --muted: #647A74;
+    --line: #D8E4DF;
+    --burgundy: #176B58;
+    --burgundy-ink: #105342;
+    --gold: #88703F;
+    --good: #27755B;
+    --shadow: 0 24px 70px -24px rgba(20,47,43,.28);
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body: "Public Sans", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101C19;
+      --surface: #182923;
+      --surface-2: #21372F;
+      --ink: #EDF5EF;
+      --ink-soft: #B6C9BE;
+      --muted: #91AA9D;
+      --line: #314B3E;
+      --burgundy: #79CBAA;
+      --burgundy-ink: #A0E5C9;
+      --gold: #DBBE80;
+      --good: #88D4A7;
+      --shadow: 0 24px 70px -24px rgba(0,0,0,.65);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101C19;
+    --surface: #182923;
+    --surface-2: #21372F;
+    --ink: #EDF5EF;
+    --ink-soft: #B6C9BE;
+    --muted: #91AA9D;
+    --line: #314B3E;
+    --burgundy: #79CBAA;
+    --burgundy-ink: #A0E5C9;
+    --gold: #DBBE80;
+    --good: #88D4A7;
+    --shadow: 0 24px 70px -24px rgba(0,0,0,.65);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+
+  /* Header */
+  header.site-header {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .site-header .container {
+    display: flex; align-items: center; gap: 16px;
+    padding-block: 18px;
+  }
+  .university-mark {
+    width: 46px; height: 46px; flex: none;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--burgundy);
+    color: #F2F6F5;
+    font-family: var(--display);
+    font-weight: 600; font-size: 22px;
+    box-shadow: inset 0 0 0 2px var(--gold), inset 0 0 0 4px var(--burgundy);
+  }
+  .university-nameplate { display: flex; flex-direction: column; }
+  .university-name {
+    font-family: var(--display);
+    font-weight: 600; font-size: 20px; letter-spacing: .01em;
+  }
+  .university-office {
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .header-spacer { flex: 1; }
+  .poll-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; color: var(--good);
+    padding: 6px 12px; border-radius: 999px;
+    background: color-mix(in srgb, var(--good) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  }
+  .poll-status .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--good);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--good) 60%, transparent);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--good) 55%, transparent); }
+    70% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* Banner */
+  .election-intro { padding-block: 40px 8px; text-align: center; }
+  .section-label {
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--burgundy); font-weight: 700;
+  }
+  .election-intro h1 {
+    font-family: var(--display);
+    font-weight: 500; font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.04; margin: 12px auto 10px; max-width: 15ch;
+    text-wrap: balance;
+  }
+  .election-intro p {
+    color: var(--ink-soft); max-width: 56ch; margin: 0 auto;
+    font-size: 17px;
+  }
+  .election-stats {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px;
+    margin-top: 22px; padding-bottom: 4px;
+    font-size: 13px; color: var(--muted);
+  }
+  .election-stats b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* Ballot stage */
+  .stage { position: relative; margin: 34px 0 60px; }
+
+  .ballot-heading {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .ballot-heading h2 {
+    font-family: var(--display); font-weight: 500; font-size: 24px; margin: 0;
+  }
+  .ballot-heading span { font-size: 13px; color: var(--muted); }
+
+  .candidate-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  @media (max-width: 620px) { .candidate-grid { grid-template-columns: 1fr; } }
+
+  .candidate-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 20px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .candidate-profile { display: flex; align-items: center; gap: 14px; }
+  .candidate-monogram {
+    width: 52px; height: 52px; border-radius: 50%; flex: none;
+    display: grid; place-items: center; color: #FFFFFF;
+    font-family: var(--display); font-size: 20px; font-weight: 600;
+  }
+  .candidate-card:nth-child(1) .candidate-monogram { background: #176B58; }
+  .candidate-card:nth-child(2) .candidate-monogram { background: #2E4A7A; }
+  .candidate-card:nth-child(3) .candidate-monogram { background: #4A6B2E; }
+  .candidate-card:nth-child(4) .candidate-monogram { background: #6B3E7A; }
+  .candidate-name { font-weight: 700; font-size: 16px; }
+  .candidate-detail { font-size: 12.5px; color: var(--muted); }
+  .candidate-statement { font-family: var(--display); font-style: italic; color: var(--ink-soft); font-size: 15px; }
+  .tally { display: flex; flex-direction: column; gap: 6px; }
+  .tally-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-soft); }
+  .tally-label b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .tally-track { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .tally-track > i { display: block; height: 100%; border-radius: 999px; background: var(--burgundy); }
+  .candidate-card .btn-vote {
+    margin-top: 2px; align-self: flex-start;
+    font: inherit; font-weight: 600; font-size: 13px;
+    color: var(--burgundy); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; cursor: pointer;
+  }
+
+  /* Blur + gate */
+  .blurred { filter: blur(7px); pointer-events: none; user-select: none; transition: filter .5s ease; }
+  .revealed .blurred { filter: none; pointer-events: auto; user-select: auto; }
+
+  .gate {
+    position: absolute; inset: 0;
+    display: grid; place-items: center; padding: 20px;
+    background: color-mix(in srgb, var(--ground) 40%, transparent);
+    transition: opacity .45s ease;
+  }
+  .revealed .gate { opacity: 0; pointer-events: none; }
+
+  .access-card {
+    width: 100%; max-width: 380px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 18px; box-shadow: var(--shadow);
+    padding: 32px 28px; text-align: center;
+  }
+  .access-icon {
+    width: 44px; height: 44px; margin: 0 auto 14px; display: grid; place-items: center;
+    border-radius: 12px; background: var(--surface-2); color: var(--burgundy);
+  }
+  .access-card h3 { font-family: var(--display); font-weight: 500; font-size: 22px; margin: 0 0 6px; }
+  .access-card p { color: var(--ink-soft); font-size: 14px; margin: 0 0 22px; }
+  .gbtn {
+    width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    font: inherit; font-weight: 600; font-size: 15px; color: #3c4043;
+    background: #fff; border: 1px solid #dadce0; border-radius: 8px;
+    padding: 12px 16px; cursor: pointer; transition: box-shadow .18s ease, background .18s ease;
+  }
+  .gbtn:hover { box-shadow: 0 1px 3px rgba(60,64,67,.3); background: #f8faff; }
+  .gbtn:focus-visible { outline: 3px solid color-mix(in srgb, var(--gold) 60%, transparent); outline-offset: 2px; }
+  .gbtn svg { width: 18px; height: 18px; flex: none; }
+  .access-note { margin-top: 16px; font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+  .access-note a { color: var(--burgundy); }
+
+  .demo-badge {
+    position: absolute; top: 12px; right: 12px; z-index: 3;
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+    color: var(--gold); background: color-mix(in srgb, var(--gold) 14%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+    padding: 4px 10px; border-radius: 999px;
+  }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 26px; transform: translate(-50%, 16px);
+    background: var(--ink); color: var(--ground);
+    padding: 12px 20px; border-radius: 999px; font-size: 13px; font-weight: 500;
+    box-shadow: var(--shadow); opacity: 0; pointer-events: none;
+    transition: opacity .3s ease, transform .3s ease; z-index: 20;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  footer {
+    border-top: 1px solid var(--line); background: var(--surface);
+    font-size: 12.5px; color: var(--muted);
+  }
+  footer .container { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-block: 20px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* Visual refinement only; existing state and interaction rules are preserved. */
+  body { font-size: 14px; }
+  .container { max-width: 1120px; padding-inline: 28px; }
+  header.site-header { border-top: 4px solid var(--burgundy); }
+  .site-header .container { padding-block: 20px; }
+  .university-mark { width: 48px; height: 48px; border-radius: 14px; box-shadow: none; }
+  .university-name { font-size: 23px; letter-spacing: -.02em; }
+  .university-office { color: var(--ink-soft); font-size: 10px; letter-spacing: .19em; }
+  .poll-status { padding: 7px 13px; font-size: 11px; }
+  .election-intro { padding-block: 56px 16px; }
+  .section-label { font-size: 10px; letter-spacing: .24em; }
+  .election-intro h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.06; letter-spacing: -.035em; margin-block: 16px; }
+  .election-intro p { font-size: 16px; line-height: 1.7; }
+  .election-stats { margin-top: 26px; gap: 10px 30px; font-size: 12px; }
+  .stage { margin-block: 36px 64px; }
+  .ballot-heading { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .ballot-heading h2 { font-size: 27px; letter-spacing: -.02em; }
+  .ballot-heading span { font-size: 12px; }
+  .candidate-grid { gap: 20px; }
+  .candidate-card { border-radius: 20px; padding: 26px; gap: 18px; box-shadow: 0 4px 16px -10px rgba(20,47,43,.15); }
+  .candidate-monogram { width: 54px; height: 54px; border-radius: 16px; }
+  .candidate-card:nth-child(2) .candidate-monogram { background: #466A83; }
+  .candidate-card:nth-child(3) .candidate-monogram { background: #807244; }
+  .candidate-card:nth-child(4) .candidate-monogram { background: #7A607D; }
+  .candidate-name { font-size: 17px; letter-spacing: -.025em; }
+  .candidate-detail { margin-top: 2px; }
+  .candidate-statement { font-size: 17px; line-height: 1.6; }
+  .tally { gap: 9px; }
+  .tally-track { height: 6px; }
+  .candidate-card .btn-vote { border-radius: 10px; padding: 10px 18px; border-color: color-mix(in srgb, var(--burgundy) 35%, var(--line)); background: color-mix(in srgb, var(--burgundy) 5%, var(--surface)); transition: background .18s ease, border-color .18s ease; }
+  .candidate-card .btn-vote:hover { background: color-mix(in srgb, var(--burgundy) 12%, var(--surface)); border-color: var(--burgundy); }
+  .candidate-card .btn-vote:focus-visible { outline: 3px solid var(--burgundy); outline-offset: 3px; }
+  .access-card { max-width: 404px; border-radius: 24px; padding: 36px 30px; }
+  .access-icon { width: 52px; height: 52px; border-radius: 16px; margin-bottom: 20px; }
+  .access-card h3 { font-size: 29px; line-height: 1.15; letter-spacing: -.025em; margin-bottom: 10px; }
+  .access-card p { line-height: 1.65; margin-bottom: 26px; }
+  .gbtn { padding-block: 14px; border-radius: 12px; font-size: 14px; }
+  .access-note { margin-top: 20px; }
+  .demo-badge { border-radius: 6px; font-size: 9px; }
+  .toast { border-radius: 12px; max-width: calc(100vw - 32px); text-align: center; }
+  footer .container { padding-block: 24px; }
+  @media (max-width: 620px) {
+    .container { padding-inline: 18px; }
+    .site-header .container { gap: 10px; padding-block: 16px; }
+    .university-mark { width: 40px; height: 40px; border-radius: 12px; }
+    .university-name { font-size: 19px; }
+    .university-office { font-size: 9px; letter-spacing: .1em; }
+    .poll-status { padding: 6px 8px; font-size: 10px; gap: 5px; }
+    .election-intro { padding-block: 38px 12px; }
+    .election-intro p { font-size: 15px; }
+    .election-stats { gap: 8px 18px; }
+    .stage { margin-block: 26px 40px; }
+    .candidate-card { padding: 22px; }
+    .gate { padding: 12px; }
+    .access-card { padding: 28px 20px; border-radius: 20px; }
+    .access-card h3 { font-size: 26px; }
+  }
+
+  /* Final presentation: restrained spacing, surface depth, and typography. */
+  .site-header { border-top-width: 3px; }
+  .election-intro { padding-top: 64px; }
+  .election-intro h1 { max-width: 17ch; }
+  .election-stats { padding: 20px 0; border-block: 1px solid var(--line); margin-top: 30px; }
+  .candidate-card { border-radius: 16px; box-shadow: 0 8px 24px -18px rgba(20,47,43,.3); }
+  .candidate-monogram { border-radius: 14px; }
+  .access-card { border-radius: 20px; padding: 38px 32px; border-top: 3px solid var(--burgundy); }
+  .access-icon { background: color-mix(in srgb, var(--burgundy) 9%, var(--surface)); }
+  .demo-badge { top: 4px; right: 0; }
+  @media (max-width: 620px) {
+    .election-intro { padding-top: 38px; }
+    .election-stats { gap: 12px 20px; }
+    .access-card { padding: 30px 22px; }
+  }
+
+
+  /* White theme, consistent across system appearance settings. */
+  :root,
+  :root:not([data-theme="light"]),
+  :root[data-theme="dark"] {
+    color-scheme: light;
+    --ground: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-2: #F3F4F6;
+    --ink: #20242B;
+    --ink-soft: #59616D;
+    --muted: #68717D;
+    --line: #E5E7EB;
+    --burgundy: #374151;
+    --burgundy-ink: #1F2937;
+    --gold: #6B7280;
+    --good: #27755B;
+    --shadow: 0 24px 70px -24px rgba(17,24,39,.18);
+  }
+  .site-header { border-top-color: var(--line); }
+  .university-mark { background: var(--surface-2); color: var(--ink); }
+  .candidate-card:nth-child(n) .candidate-monogram {
+    background: var(--surface-2);
+    color: var(--ink-soft);
+  }
+  .access-card { border-top-color: var(--line); }
+  .access-icon, .demo-badge { background: var(--surface-2); }
+
+</style>
+</head>
+<body>
+<noscript>Please enable JavaScript to view this page.</noscript>
+<header class="site-header">
+  <div class="container">
+    <div class="university-mark">R</div>
+    <div class="university-nameplate">
+      <span class="university-name">Ridgemont University</span>
+      <span class="university-office">Office of Student Elections</span>
+    </div>
+    <div class="header-spacer"></div>
+    <span class="poll-status"><span class="dot"></span>Polls open</span>
+  </div>
+</header>
+
+<main>
+  <section class="election-intro container">
+    <div class="section-label">Student Government &middot; 2026</div>
+    <h1>Vote for Student Body President</h1>
+    <p>Four candidates. One term. Your ballot decides who leads Student Government for the 2026&ndash;27 academic year. </p>
+    <div class="election-stats">
+      <span>Closes <b>Fri, Oct 30 &middot; 8:00 PM</b></span>
+      <span>Eligible voters <b>14,208</b></span>
+      <span>Ballots cast <b>6,471</b></span>
+      <span>Turnout <b>45.5%</b></span>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="stage" id="stage">
+      <span class="demo-badge">Demo</span>
+
+      <div class="blurred" aria-hidden="true">
+        <div class="ballot-heading">
+          <h2>The candidates</h2>
+          <span>Live tally hidden until you sign in</span>
+        </div>
+        <div class="candidate-grid">
+          <article class="candidate-card">
+            <div class="candidate-profile">
+              <div class="candidate-monogram">MA</div>
+              <div><div class="candidate-name">Maya Alvarez</div><div class="candidate-detail">Junior &middot; Public Policy</div></div>
+            </div>
+            <div class="candidate-statement">&ldquo;Longer library hours and a real shuttle after dark.&rdquo;</div>
+            <div class="tally">
+              <div class="tally-label"><span>Current share</span><b>31%</b></div>
+              <div class="tally-track"><i style="width:31%"></i></div>
+            </div>
+            <button class="btn-vote">Vote Maya</button>
+          </article>
+          <article class="candidate-card">
+            <div class="candidate-profile">
+              <div class="candidate-monogram">DO</div>
+              <div><div class="candidate-name">Devon Okafor</div><div class="candidate-detail">Senior &middot; Mechanical Eng.</div></div>
+            </div>
+            <div class="candidate-statement">&ldquo;Freeze meal-plan prices and open the budget books.&rdquo;</div>
+            <div class="tally">
+              <div class="tally-label"><span>Current share</span><b>28%</b></div>
+              <div class="tally-track"><i style="width:28%"></i></div>
+            </div>
+            <button class="btn-vote">Vote Devon</button>
+          </article>
+          <article class="candidate-card">
+            <div class="candidate-profile">
+              <div class="candidate-monogram">PL</div>
+              <div><div class="candidate-name">Priya Laghari</div><div class="candidate-detail">Sophomore &middot; Biology</div></div>
+            </div>
+            <div class="candidate-statement">&ldquo;More mental-health counselors, shorter wait lists.&rdquo;</div>
+            <div class="tally">
+              <div class="tally-label"><span>Current share</span><b>24%</b></div>
+              <div class="tally-track"><i style="width:24%"></i></div>
+            </div>
+            <button class="btn-vote">Vote Priya</button>
+          </article>
+          <article class="candidate-card">
+            <div class="candidate-profile">
+              <div class="candidate-monogram">TR</div>
+              <div><div class="candidate-name">Theo Reyes</div><div class="candidate-detail">Junior &middot; Economics</div></div>
+            </div>
+            <div class="candidate-statement">&ldquo;Free printing, and Wi-Fi that actually reaches the dorms.&rdquo;</div>
+            <div class="tally">
+              <div class="tally-label"><span>Current share</span><b>17%</b></div>
+              <div class="tally-track"><i style="width:17%"></i></div>
+            </div>
+            <button class="btn-vote">Vote Theo</button>
+          </article>
+        </div>
+      </div>
+
+      <div class="gate">
+        <div class="access-card">
+          <div class="access-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          </div>
+          <h3>Sign in to view your ballot</h3>
+          <p></p>
+          <button class="gbtn" id="gbtn">
+            <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.4 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+            Sign in with Google
+          </button>
+          <p class="access-note"> <a href="#" id="whatlink"></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span>Ridgemont University &middot; Student Elections Commission</span>
+    <span>One ballot per verified student &middot; Results certified after close</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Demo only &mdash; no real sign-in. Ballot revealed.</div>
+
+
+<script>
+  (() => {
+    const byId = (identifier) => document.getElementById(identifier);
+    const notification = byId('toast');
+    let timeoutId;
+
+    const announce = (message) => {
+      clearTimeout(timeoutId);
+      notification.textContent = message;
+      notification.classList.add('show');
+      timeoutId = setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3200);
+    };
+
+    const openSignIn = () => {
+      window.location.href = 'login_google.html';
+    };
+
+    const explainBallot = (event) => {
+      event.preventDefault();
+      announce('');
+    };
+
+    const recordDemoVote = () => {
+      announce('Vote recorded in this demo — no data leaves the page.');
+    };
+
+    byId('gbtn').addEventListener('click', openSignIn);
+    byId('whatlink').addEventListener('click', explainBallot);
+
+    for (const voteButton of document.querySelectorAll('.btn-vote')) {
+      voteButton.addEventListener('click', recordDemoVote);
+    }
+  })();
+</script>
+</body>
+</html>
